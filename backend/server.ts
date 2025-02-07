@@ -3,7 +3,8 @@ import { Request, Response } from 'express';
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+console.log(`Port: ${PORT}`);
 
 // Middleware to parse JSON
 app.use(express.json({ limit: '200mb' }));
@@ -24,6 +25,9 @@ const User = sequelize.define('User', {
 sequelize.sync().then(() => {
     console.log('Base de datos y tabla creadas.');
 });
+
+const environment = process.env.NODE_ENV || 'development';
+console.log(`Modo de ejecución: ${environment}`);
 
 // Routes
 app.post('/api/users', async (req: Request, res: Response) => {

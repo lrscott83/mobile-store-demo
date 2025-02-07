@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -44,11 +44,9 @@ var PORT = 3000;
 // Middleware to parse JSON
 app.use(express.json({ limit: '200mb' }));
 app.use(express.urlencoded({ extended: true, limit: '200mb' }));
-if (process.env.NODE_ENV === 'development') {
-    app.use(cors({
-        origin: 'http://localhost:5173' // Solo permite solicitudes desde React (suponiendo que corre en el puerto 3000)
-    }));
-}
+// app.use(cors({
+//     origin: 'http://localhost:5173' // Solo permite solicitudes desde React (suponiendo que corre en el puerto 3000)
+// }));
 var _a = require('sequelize'), Sequelize = _a.Sequelize, DataTypes = _a.DataTypes;
 var sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/test-nodejs');
 var User = sequelize.define('User', {
@@ -58,6 +56,8 @@ var User = sequelize.define('User', {
 sequelize.sync().then(function () {
     console.log('Base de datos y tabla creadas.');
 });
+var environment = process.env.NODE_ENV || 'development';
+console.log("Modo de ejecuci\u00F3n: ".concat(environment));
 // Routes
 app.post('/api/users', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, username, email, user, error_1;
