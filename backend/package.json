@@ -10,5 +10,9 @@
     "sequelize": "^6.37.5",
     "typescript": "^5.0.2",
     "typescript-guid": "^1.0.3"
+  },
+  "scripts": {
+    "build": "tsc server.ts",
+    "start": "node dist/server.js"
   }
 }
