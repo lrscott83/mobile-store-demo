@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                // Versión de JavaScript objetivo
+    "module": "CommonJS",           // Usa CommonJS como módulo (compatible con Node.js)
+    "strict": true,                 // Activa estrictas verificaciones de tipos
+    "outDir": "./dist",             // Directorio de salida de los archivos compilados
+    "esModuleInterop": true         // Permite compatibilidad con importaciones de CommonJS
+  },
+  "include": ["server.ts"],         // Archivos a incluir en la compilación
+  "exclude": ["node_modules"]
+}
