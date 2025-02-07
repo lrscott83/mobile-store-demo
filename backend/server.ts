@@ -15,7 +15,9 @@ app.use(express.urlencoded({ extended: true, limit: '200mb' }));
 // }));
 
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/test-nodejs');
+// postgresql://mobilestore:l4BTOa7fkULKOhSRhz2jXglFRLPsc8ym@dpg-cuj7srd6l47c73a276fg-a/mobilestore_1pgu
+//const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/test-nodejs');
+const sequelize = new Sequelize('postgresql://mobilestore:l4BTOa7fkULKOhSRhz2jXglFRLPsc8ym@dpg-cuj7srd6l47c73a276fg-a/mobilestore_1pgu');
 
 const User = sequelize.define('User', {
     username: { type: DataTypes.STRING },
