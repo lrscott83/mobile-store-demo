@@ -6,7 +6,7 @@
         "build:frontend": "cd frontend && yarn install && yarn build",
         "build:backend": "cd backend && yarn install && yarn build",
         "build": "yarn build:frontend && yarn build:backend",
-        "start": "yarn start:backend"
+        "start": "cd backend && yarn start"
     },
     "devDependencies": {
         "concurrently": "^8.0.0"
